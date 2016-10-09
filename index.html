@@ -1,0 +1,477 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>How Skyline Created the Mile of Music Festival App - NewAITP October 12, 2016</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/blood.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi)
+                ? 'css/print/pdf.css'
+                : 'css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+				<style>
+					h1.darkview {
+					    /* your styles for the class version-one */
+					    color: black;
+					}
+					h3.darkview {
+					    /* your styles for the class version-one */
+					    color: black;
+					}
+
+          html.dim .backgrounds {
+					   -webkit-filter:   brightness(.7);
+					   -moz-filter: brightness(.7);
+					   -o-filter: brightness(.7);
+					   -ms-filter: brightness(.7);
+					   filter: brightness(.7);
+					}
+
+				</style>
+				<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides" data-transition="concave">
+                <section data-background="/images/MomLogo.jpg" data-state="dim">
+                    <h1 class='' >The Mile of Music Festival App</h1>
+                    <h3 >New AITP October 12, 2016</h3>
+
+                </section>
+
+								<section data-background="/images/JohnAndGreg.jpg" data-state="dim">
+									<h2>John Ptacek</h2>
+									<p><i class="fa fa-html5 fa-sm"></i>&nbsp;<a href="https://jptacek.com">JPtacek.com</a></p>
+									<p><i class="fa fa-twitter fa-sm"></i>&nbsp;<a href="https://twitter.com/jptacek">@jptacek</a></p>
+									<p><i class="fa fa-github fa-sm"></i>&nbsp;<a href="https://github.com/jptacek">JPtacek</a></p>
+                  <p><i class="fa fa-linkedin fa-sm"></i>&nbsp;<a href="https://www.linkedin.com/in/johnptacek">johnptacek</a></p>
+									<p><i class="fa fa-html5 fa-sm"></i>&nbsp;<a href="https://www.SkylineTechnologies.com">Skyline Technologies</a></p>
+									<p><i class="fa fa-twitter fa-sm"></i>&nbsp;<a href="https://twitter.com/SkylineTweets">@SkylineTweets</a></p>
+								</section>
+                <section>
+                    <h2>Agenda</h2>
+                    <p>Fostering Innovation</p>
+                    <p>How We Got Here</p>
+                    <p>Mile of Music App</p>
+                    <p>Mile of Music App Architecture</p>
+                </section>
+
+                <!-- Slide 3-->
+                <section>
+                    <h2>Start of a Conversation</h2>
+                </section>
+
+                <!-- Slide on Javascript History-->
+                <section>
+                    <section data-markdown>
+                        ## Fostering Innovation
+
+                        Innovation at Companies is Hard
+
+                        Day Job Wins/Customer Service
+                    </section>
+                    <section data-markdown>
+                        ## Dev/Give Camps
+
+                        Skyline started Give Camps in 2010
+
+                        Give Camps focus on non profits
+
+                        People are
+                    </section>
+                    <section data-markdown>
+                        ## June 1997
+
+                        ECMAScript standard approved
+                    </section>
+                    <section data-markdown>
+                        ## 2005
+
+                        Microsoft introduced in late 90s with XMLHttpRequest
+
+                        Google adopts for Gmail and Maps in 2004/2005
+
+                        Jesse James Garret coins Ajax in paper [Ajax: A New Approach to Web Applications](http://adaptivepath.org/ideas/ajax-new-approach-web-applications/)
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                        ## 2005/2006
+
+                        The Libraries and Frameworks are coming...
+
+                        [Dojo](http://dojotoolkit.org/) - Cross platform widgets
+
+                        [ProtoType](http://prototypejs.org/) - Emerged as Rails tool for HTTP
+
+                        [jQuery](https://jquery.com/) - The One That Changed Everything
+                      </script>
+                    </section>
+                    <section data-markdown>
+                        ## June 2009
+
+                        ECMAScript 5 approved Introduced JSON support
+
+                        JSON is its own standard
+                    </section>
+                    <section data-markdown>
+                        ## 2010
+
+                        Initial Release of AngularJS 1.0 by Miško Hevery and Adam Abrons at Brat Tech
+
+                        Released as Open Source Hevery moved to Google, still develops and maintains
+                    </section>
+                    <section data-markdown>
+                        ## 2011
+                        React Created by Jordan Walke
+
+                        First deployed to drive FaceBooks's News feed
+                    </section>
+                    <section data-markdown>
+                        ## May 2013
+
+                        React [Open Sourced](https://github.com/facebook/react) at React Conf
+                    </section>
+                    <section data-markdown>
+                        ## Sept 2014
+
+                        AngularJS 2.0 [announced](https://github.com/facebook/react) at NG-Europe
+
+                        Begin the freak out
+
+                        ![Angular TombStone](./images/angularTombstone.jpg)
+                    </section>
+                    <section data-markdown>
+                        ## June 2015
+
+                        ECMAScript 2015 (ES6) is launched
+
+                        ECMAScript 2016 (ES7) just came out this June
+                    </section>
+
+                    <section data-markdown>
+                        ## Why History?
+
+                        Things are changing MUCH quicker than before!
+                    </section>
+                </section>
+
+                <!-- Slide on AngularJS -->
+                <section >
+                    <h2>AngularJS Level Set</h2>
+
+                    <p class="fragment">From the fine folks at Google​</p>
+
+                    <p class="fragment">AngularJS 1.x – Google JavaScript library for development​</p>
+
+                    <p class="fragment">AngularJS 2.x – Called Angular​</p>
+                    <p class="fragment">Angular is a Framework​</p>
+                    <p class="fragment">Angular is opinionated​</p>
+                    <p class="fragment">Angular has code in your markup​</p>
+                    <p class="fragment">Angular is HTML centric</p>
+                </section>
+
+                <!-- Slide on React -->
+                <section>
+                    <h2>React Level Set</h2>
+                    <p class="fragment">From the fine folks at Facebook</p>
+                    <p class="fragment">React is a Library (View)​</p>
+                    <p class="fragment">React is not opinionated​</p>
+                    <p class="fragment">React has markup in your code​</p>
+                    <p class="fragment">React is JavaScript centric</p>
+                </section>
+
+                <!-- Slide on Comparing -->
+                <section  data-background="./images/apple-orange.jpg" data-state="dim">
+                    <h2>Not the Same</h2>
+                    <h4>Angular is a framework. React is a library</h4>
+                </section>
+
+                <section>
+                    <h2>Project Setup</h2>
+                    <h4>The New JavaScript</h4>
+                    <p>
+                        <a href="https://angular.io/docs/ts/latest/quickstart.html">Angular "QuickStart"</a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/FreeCodeCamp/FreeCodeCamp/wiki/Setting-Up-A-React-ES6-Webpack-Project">React "QuickStart"</a>
+                    </p>
+                </section>
+
+                <!-- New Project setup -->
+                <section>
+                    <h2>Project Setup</h2>
+                    <h4>Good News!</h4>
+                    <p>
+                        <b>Angular Command Line</b>
+                        -
+                        <a href=" https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a>
+                    </p>
+                    <p>
+                        <pre>
+													<code class="hljs" data-trim contenteditable>ng new FOO</code>
+												</pre>
+                    </p>
+                    <p>
+                        <b>React Command Line</b>
+                        <a href="https://github.com/facebookincubator/create-react-app">
+                            https://github.com/facebookincubator/create-react-app</a>
+                    </p>
+                    <p>
+                        <pre>
+														<code class="hljs" data-trim contenteditable>create-react-app FOO</code>
+													</pre>
+                    </p>
+                </p>
+            </section>
+            <!-- Slide on React -->
+            <section>
+                <h2>Why Upgrade from AngularJS?</h2>
+                <p class="fragment">Mobile First</p>
+                <p class="fragment">Standards focused​</p>
+                <p class="fragment">Performance (Virtual DOM!)</p>
+                <p class="fragment">Web Components</p>
+            </section>
+
+            <!-- Slide on Comparing -->
+            <section  data-background="./images/apple-orange.jpg" data-state="dim">
+                <h2>Not the Same</h2>
+                <h4>Angular is a framework. React is a library</h4>
+            </section>
+
+            <!-- Code -->
+            <section >
+                <h2>Periodic Table App</h2>
+                <p>Angular Version</p>
+                <p>React Version</p>
+            </section>
+
+            <!-- Code -->
+            <section >
+                <h2>Components</h2>
+                <p>React and Angular based on components</p>
+                <p>Angular Gateway to HTML components</p>
+            </section>
+
+            <!-- Code -->
+            <section >
+                <h2>Angular Component</h2>
+                <pre><code class="hljs" data-trim contenteditable>
+		import { Component } from 'angular2/core';​
+		@Component({​
+		    selector: 'foo-Div',​
+		    templateUrl: 'app/foo.html',​
+		    styleUrls: [ 'app/foo.css' ]​
+		})​
+		​
+		export class Foo {​
+		    public message = 'Foo!';​
+		}
+										</code></pre>
+            </section>
+
+            <!-- Code for React Component -->
+            <section >
+                <h2>React Component</h2>
+                <pre><code class="hljs" data-trim contenteditable>
+import React from 'react';​
+export default class Foo extends React.Component {​
+	constructor(props) {​
+		super(props);​
+		this.state = { message: 'foo!' };​
+	}​
+	render() {​
+		return (​
+			<div>​
+				<p>{this.state.message}</p>​
+			</div>​
+			);
+		}
+	}​
+									</code></pre>
+            </section>
+
+            <section >
+                <h2>​​​​Templates and Databinding</h2>
+                <p>Templates and Databinding</p>
+                <p>React HTML is in render method</p>
+                <p>JSX allows for HTML like</p>
+              </section>
+              <section>
+                <h2>Angular Data Binding</h2>
+                <p>Angular has one way</p>
+                <pre><code class="hljs" data-trim contenteditable>{{element.name}}</pre></code>
+              </li>
+              <p>Angular has two way data binding</p>
+                    <pre><code class="hljs" data-trim contenteditable><input type="text" [(ngModel)]="inputFieldName" id="id1" /></pre></code>
+              </section>
+              <section>
+                <h2>React Data Binding</h2>
+                  <p>React is stateless, no two way binding</p>
+                <pre><code class="hljs" data-trim contenteditable>This.state.inputFieldName</pre></code>
+              </section>
+
+<section>
+    <h2>Why Angular</h2>
+    <p class="fragment">AngularJS populartiy​</p>
+    <p class="fragment">Framework means less JavaScript fatigue​</p>
+    <p class="fragment">TypeScript​</p>
+    <p class="fragment">Less Churn​</p>
+    <p class="fragment">Web Component​</p>
+    <p class="fragment">You like JavaScript in your HTML</p>
+</section>
+
+<section>
+    <h2>Why React</h2>
+    <p class="fragment">JSX​</p>
+    <p class="fragment">Fails Better​</p>
+    <p class="fragment">You LOVE JavaScript​​</p>
+    <p class="fragment">You like HTML in your JavaScript​​</p>
+</section>
+
+<section>
+    <h2>Feelings</h2>
+    <section>&nbsp;</section>
+    <section>
+      <blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="pt" dir="ltr">
+        <a href="https://twitter.com/jptacek">@jptacek</a> boooooo angular boooooooooooo</p>&mdash; $30,000 Logout CSRF (@tqbf) <a href="https://twitter.com/tqbf/status/771175400529534976">September 1, 2016</a>
+      </blockquote>
+      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </section>
+    <section>
+        <p>Angular is a framework = bigger</p>
+        <ul>
+            <li>React allows you to choose​
+            <li>566K Angular vs 139K for React+Redux​
+        </ul>
+    </section>
+
+    <section>
+        <p>React is a library, best of breed</p>
+        <p class="fragment">St​​weet Christmas! JavaScript churn is killing me​</p>
+    </section>
+
+    <section>
+        <p>Angular has forced consistency​</p>
+    </section>
+
+    <section>
+        <p>Angular2 is a path to web components​​</p>
+    </section>
+
+    <section>
+        <p>React/JSX allows you to fail early</p>
+    </section>
+
+    <section>
+        <p>React is JavaScript​</p>
+    </section>
+
+    <section>
+        <p>Angular is more HTML, but not HTML​​</p>
+				<p>Angular</p>
+        <pre><code class="hljs" data-trim contenteditable>(click) = "onSelect(myOject)"</pre></code><br/>
+				<p>React</p>
+        <pre><code class="hljs" data-trim contenteditable>onClick ={ this.onSelect.bind(this,myObject)}​</pre></code><br/>
+
+		</section>
+		<section>
+		<p>What is Google Doing!?!!?</p>
+		<ul>
+		    <li>Polymer
+		    <li>Web Components
+		</ul>
+		<p>DoubleClick uses Angular</p>
+		<p>YouTube Gaming, Google Patents (and SalesForce) uses Polymer</p>
+		</section>
+
+		<section>
+		<p>JSX can trail in tooling on Microsoft stack</p>
+		</section>
+
+		<section>
+		<p>Typescript, blessing or curse</p>
+		</section>
+
+		<section>
+		<p>Mobile performance with Angular file size​</p>
+		<ul>
+		    <li>React mix and match approach
+		</ul>
+		</section>
+
+		<section>
+		<p>To learn React, learn JavaScript; to learn Angular, learn Angular​</p>
+		<ul>
+		    <li>Angular starts quick, can get finicky soon after​
+		</ul>
+		</section>
+
+		</section>
+
+		<section>
+			<h2>Recommendations</h2>
+			<p class="fragment">Wait/Do Nothing</p>
+			<p class="fragment">Angular for Enterprises</p>
+			<p class="fragment">Reactfor JavaScript strong organizations/devs</p>
+
+		</section>
+
+		<section data-background="./images/EintsteinQuestionEverything.png" data-state="dim">
+			<h2>Questions?</h2>
+		</section>
+
+    <section data-background="/images/JohnAndGreg.jpg" data-state="dim">
+      <h2>John Ptacek</h2>
+      <p><i class="fa fa-html5 fa-sm"></i>&nbsp;<a href="https://jptacek.com">JPtacek.com</a></p>
+      <p><i class="fa fa-twitter fa-sm"></i>&nbsp;<a href="https://twitter.com/jptacek">@jptacek</a></p>
+      <p><i class="fa fa-github fa-sm"></i>&nbsp;<a href="https://github.com/jptacek">JPtacek</a></p>
+      <p><i class="fa fa-linkedin fa-sm"></i>&nbsp;<a href="https://www.linkedin.com/in/johnptacek">johnptacek</a></p>
+      <p><i class="fa fa-html5 fa-sm"></i>&nbsp;<a href="https://www.SkylineTechnologies.com">Skyline Technologies</a></p>
+      <p><i class="fa fa-twitter fa-sm"></i>&nbsp;<a href="https://twitter.com/SkylineTweets">@SkylineTweets</a></p>
+    </section>
+
+</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    history: true,
+    transition: 'concave',
+    // More info https://github.com/hakimel/reveal.js#dependencies
+    dependencies: [
+        {
+            src: 'plugin/markdown/marked.js'
+        }, {
+            src: 'plugin/markdown/markdown.js'
+        }, {
+            src: 'plugin/notes/notes.js',
+            async: true
+        }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }
+    ]
+});
+</script>
+</body>
+</html>
